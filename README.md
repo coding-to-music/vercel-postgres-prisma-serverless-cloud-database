@@ -6,6 +6,8 @@ https://github.com/coding-to-music/vercel-postgres-prisma-serverless-cloud-datab
 
 From / By https://github.com/vercel/examples/tree/main/storage/postgres-prisma
 
+https://github.com/coding-to-music/grafana-cloud-docker-postgres-integration
+
 ## Environment variables:
 
 ```java

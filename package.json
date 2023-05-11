@@ -16,7 +16,7 @@
     "lint": "next lint"
   },
   "prisma": {
-    "seed:pets": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+    "seed:user": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "4.13.0",

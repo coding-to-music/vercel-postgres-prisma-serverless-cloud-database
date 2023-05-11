@@ -16,7 +16,8 @@ https://github.com/coding-to-music/grafana-cloud-docker-postgres-integration
 
 ## user interfaces:
 
-- Grafana http://localhost:3000
+- APP
+- Prisma Studio
 
 ## GitHub
 
@@ -33,8 +34,11 @@ git push -u origin main
 ## Running
 
 ```
+
 yarn install
+yarn build
 yarn start
+yarn seed:pets
 yarn seed:simulation
 yarn seed:streets
 yarn seed:ev_locations

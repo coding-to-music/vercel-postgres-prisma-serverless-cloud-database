@@ -38,6 +38,10 @@
   "devDependencies": {
     "@types/ms": "^0.7.31",
     "prisma": "^4.13.0",
-    "turbo": "^1.9.3"
+    "turbo": "^1.9.3",
+    "dotenv": "^16.0.3",
+    "fast-csv": "^4.3.6",
+    "pg": "^8.10.0",
+    "fs": "^0.0.1-security"
   }
 }

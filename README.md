@@ -8,6 +8,8 @@ From / By https://github.com/vercel/examples/tree/main/storage/postgres-prisma
 
 https://github.com/coding-to-music/grafana-cloud-docker-postgres-integration
 
+https://github.com/vercel/examples/issues/697
+
 ## Environment variables:
 
 ```java
@@ -110,4 +112,53 @@ Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&ut
 
 ```bash
 sudo apt install postgresql
+```
+
+## Console-generated psql connection example in postgres-prisma-postgres does not work, possible solution is provided here
+
+https://github.com/vercel/examples/issues/697
+
+The Suggested psql connection example in postgres-prisma-postgres does not work:
+
+```bash
+# Format:
+psql "postgresql://username:password@host:port/database"
+
+# Example provided by the console:
+psql "postgres://default:************@<endpoint>.us-east-1.postgres.vercel-storage.com:5432/verceldb"
+```
+
+It gives this error:
+
+```bash
+psql: error: ERROR:  Endpoint ID is not specified. Either please upgrade the postgres client library (libpq) for SNI support or pass the endpoint ID (first part of the domain name) as a parameter: '?options=project%3D<endpoint-id>'. See more at https://neon.tech/sni
+ERROR:  connection is insecure (try using `sslmode=require`)
+```
+
+However, this connection string does work, by appending the `?options=project%3endpoint`:
+
+```bash
+# Format:
+psql "postgresql://username:password@host:port/database?options=project%3D<endpoint>"
+
+
+# Example:
+psql "postgres://default:************@<endpoint>.us-east-1.postgres.vercel-storage.com:5432/verceldb?options=project%3D<endpoint>"
+```
+
+Output:
+
+```bash
+psql (12.14 (Ubuntu 12.14-0ubuntu0.20.04.1), server 15.2)
+WARNING: psql major version 12, server major version 15.
+         Some psql features might not work.
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+Type "help" for help.
+
+verceldb=> \dt
+        List of relations
+ Schema | Name  | Type  |  Owner
+--------+-------+-------+---------
+ public | users | table | default
+(1 row)
 ```
